@@ -55,14 +55,11 @@ struct Queue * createQueue(int size){
 }
 
 int isQueueEmpty(struct Queue *queue){
-    if(queue->front == -1 && queue->rear == -1) return 1;
-    return 0;
+    return (queue->front == -1 && queue->rear == -1) ? 1 : 0;
 }
 
 int isQueueFull(struct Queue *queue){
-    if(queue->rear < queue->front && queue->rear + 1 == queue->front)  return 1;
-    else if(queue->rear - queue->front == queue->size - 1) return 1;
-    return 0;
+    return (((queue->rear + 1) % queue->size) == queue->front) ? 1 : 0;
 }
 
 int dequeue(struct Queue *queue){
