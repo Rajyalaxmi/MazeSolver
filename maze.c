@@ -63,7 +63,7 @@ int isQueueFull(struct Queue *queue){
 }
 
 int dequeue(struct Queue *queue){
-    int ele = *(queue->arr + queue->front);
+    int ele = queue->arr[queue->front];
     if(queue->front == queue->rear){
         queue->front = -1;
         queue->rear = -1;
@@ -99,7 +99,7 @@ void enqueue(struct Queue *queue, int ele){
         queue = increaseQueue(queue);
     }
     queue->rear = (queue->rear + 1) % queue->size;
-    *(queue->arr + queue->rear) = ele;
+    queue->arr[queue->rear] = ele;
     if(queue->front == -1)
         queue->front = 0;
 }
@@ -152,8 +152,7 @@ struct Graph *construct_graph(char **maze){
 }
 
 int get_min(int a, int b){
-    if(a <= b)  return a;
-    return b;
+    return (a <= b) ? a : b;
 }
 
 int get_path_distance(struct Graph *graph, int src){
