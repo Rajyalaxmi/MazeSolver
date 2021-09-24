@@ -206,9 +206,9 @@ int main(int argc, char **argv){
             printf("%s\n", s_maze[i]);
         }
     #endif
-    struct Graph *graph = construct_graph(s_maze);
     int start = get_start_position(s_maze);
     if(start != -1){
+        struct Graph *graph = construct_graph(s_maze);
         printf("%d\n", get_path_distance(graph, start));
         return 0;
     }
